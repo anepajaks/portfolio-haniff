@@ -67,34 +67,31 @@
       <div class="star w-2 h-2 top-48 left-[70%]" style="animation-delay: 0.2s;"></div>
     </div>
 
-    <!-- 4. MATAHARI & BULAN (Orbit Kecil di Atas Langit Kanan/Tengah) -->
-    <div class="absolute top-[15%] left-[45%] md:left-[55%] -translate-x-1/2 w-[250px] h-[250px] md:w-[350px] md:h-[350px] z-[2] pointer-events-none">
-      <div id="celestial-wheel" class="relative w-full h-full rounded-full transition-transform duration-[1.5s] ease-in-out" style="transform: rotate(0deg);">
-        <!-- Matahari (Duduk kat hujung atas orbit) -->
-        <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="Sun" class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 md:w-28 md:h-28 drop-shadow-[0_0_40px_rgba(255,215,0,1)]">
-        <!-- Bulan (Duduk kat hujung bawah orbit, tapi masih tinggi di udara) -->
-        <img src="https://cdn-icons-png.flaticon.com/512/1296/1296066.png" alt="Moon" class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 rotate-180 w-16 h-16 md:w-24 md:h-24 drop-shadow-[0_0_30px_rgba(255,255,255,0.8)]">
-      </div>
+    <!-- 4. MATAHARI & BULAN (Muncul satu-satu kat langit atas) -->
+    <div class="absolute top-[10%] right-[10%] md:top-[15%] md:right-[20%] w-24 h-24 md:w-32 md:h-32 z-[2] pointer-events-none">
+      <!-- Matahari (Visible awal-awal) -->
+      <img id="sun" src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="Sun" class="absolute inset-0 w-full h-full object-contain transition-all duration-1000 opacity-100 rotate-0 drop-shadow-[0_0_40px_rgba(255,215,0,1)]">
+      <!-- Bulan (Disembunyikan awal-awal) -->
+      <img id="moon" src="https://cdn-icons-png.flaticon.com/512/2908/2908757.png" alt="Moon" class="absolute inset-0 w-full h-full object-contain transition-all duration-1000 opacity-0 rotate-90 drop-shadow-[0_0_30px_rgba(255,255,255,0.8)]">
     </div>
 
-    <!-- 5. PEMANDANGAN GUNUNG (SVG) - Kekal di bawah -->
+    <!-- 5. PEMANDANGAN GUNUNG (SVG) -->
     <svg viewBox="0 0 1440 400" preserveAspectRatio="none" class="absolute bottom-0 w-full h-[30vh] md:h-[40vh] z-[3] pointer-events-none">
       <path id="m-back" class="mountain-back" fill="#6ba4c7" d="M0,400 L0,200 L200,100 L400,250 L700,50 L1000,250 L1250,150 L1440,250 L1440,400 Z" />
       <path id="m-front" class="mountain-front" fill="#4a84a8" d="M0,400 L0,300 L250,150 L550,300 L850,100 L1150,300 L1440,200 L1440,400 Z" />
       <path id="m-ground" class="ground" fill="#2c5c7a" d="M0,400 L0,350 L400,280 L900,320 L1440,280 L1440,400 Z" />
     </svg>
 
-    <!-- 6. NAVIGATION BAR -->
-    <header id="navbar" class="absolute top-0 w-full px-8 py-6 flex justify-between items-center z-50 text-light transition-colors duration-1000">
-      <div class="text-2xl font-bold tracking-wider">HANIFF.</div>
-      <nav class="hidden md:flex gap-8 font-semibold text-lg drop-shadow-md">
+    <!-- 6. NAVIGATION BAR (Nama HANIFF dibuang, menu duduk tengah) -->
+    <header id="navbar" class="absolute top-0 w-full px-8 py-6 flex justify-center items-center z-50 text-light transition-colors duration-1000">
+      <nav class="hidden md:flex gap-8 font-semibold text-lg drop-shadow-md bg-white/20 dark:bg-black/20 px-8 py-3 rounded-full backdrop-blur-md">
         <a href="/" class="hover:text-blue-500 transition">Home</a>
         <a href="/about" class="hover:text-blue-500 transition">About</a>
         <a href="/project" class="hover:text-blue-500 transition">Projects</a>
         <a href="/contact" class="hover:text-blue-500 transition">Contact</a>
       </nav>
       <!-- Butang Toggle -->
-      <button id="theme-toggle" class="px-6 py-2 bg-white/30 dark:bg-black/30 backdrop-blur-md border border-white/40 rounded-full font-bold shadow-lg hover:scale-105 transition-transform z-50 cursor-pointer">
+      <button id="theme-toggle" class="absolute right-8 px-6 py-2 bg-white/30 dark:bg-black/30 backdrop-blur-md border border-white/40 rounded-full font-bold shadow-lg hover:scale-105 transition-transform z-50 cursor-pointer">
         Day / Night
       </button>
     </header>
@@ -121,8 +118,8 @@
           <div class="absolute -bottom-3 right-12 transform rotate-45 w-6 h-6 bg-white"></div>
         </div>
         
-        <!-- Gambar Karakter 3D Melambai -->
-        <img src="https://cdni.iconscout.com/illustration/premium/thumb/boy-waving-hand-4623773-3837887.png" alt="Haniff 3D Character" class="h-[60vh] md:h-[80vh] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.3)] hover:scale-105 transition-transform duration-500 origin-bottom">
+        <!-- Gambar Karakter 3D (Guna link stabil dari Webflow) -->
+        <img src="https://assets.website-files.com/63dbb4ac7a8fc091f0345097/63dbbb00e30e18378619bc04_3D%20Avatar%201.png" alt="Haniff 3D Character" class="h-[60vh] md:h-[80vh] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.3)] hover:scale-105 transition-transform duration-500 origin-bottom">
       </div>
     </main>
 
@@ -130,42 +127,57 @@
     <script is:inline>
       const btn = document.getElementById('theme-toggle');
       const sky = document.getElementById('sky');
-      const wheel = document.getElementById('celestial-wheel');
       const navbar = document.getElementById('navbar');
       const mainContent = document.getElementById('main-content');
       const subtitle = document.getElementById('subtitle');
+      
+      const sun = document.getElementById('sun');
+      const moon = document.getElementById('moon');
       
       const mBack = document.getElementById('m-back');
       const mFront = document.getElementById('m-front');
       const mGround = document.getElementById('m-ground');
 
       let isDark = false;
-      let rotationDegree = 0;
 
       btn.addEventListener('click', () => {
         isDark = !isDark;
         
-        // Pusing matahari & bulan (sekarang berputar dalam bulatan kecil di langit)
-        rotationDegree += 180;
-        wheel.style.transform = `rotate(${rotationDegree}deg)`;
-        
         if (isDark) {
+          // Tukar Mode Malam
           document.body.classList.add('dark');
           sky.classList.replace('sky-light', 'sky-dark');
           navbar.classList.replace('text-light', 'text-dark');
           mainContent.classList.replace('text-light', 'text-dark');
           subtitle.classList.replace('text-[#8B5A2B]', 'text-[#D2B48C]');
           
+          // Matahari Hilang, Bulan Muncul
+          sun.classList.replace('opacity-100', 'opacity-0');
+          sun.classList.replace('rotate-0', '-rotate-90');
+          
+          moon.classList.replace('opacity-0', 'opacity-100');
+          moon.classList.replace('rotate-90', 'rotate-0');
+          
+          // Siluet gunung malam
           mBack.style.fill = '#1a2b4c';
           mFront.style.fill = '#0f1a30';
           mGround.style.fill = '#080d1a';
         } else {
+          // Tukar Mode Siang
           document.body.classList.remove('dark');
           sky.classList.replace('sky-dark', 'sky-light');
           navbar.classList.replace('text-dark', 'text-light');
           mainContent.classList.replace('text-dark', 'text-light');
           subtitle.classList.replace('text-[#D2B48C]', 'text-[#8B5A2B]');
           
+          // Matahari Muncul, Bulan Hilang
+          sun.classList.replace('opacity-0', 'opacity-100');
+          sun.classList.replace('-rotate-90', 'rotate-0');
+          
+          moon.classList.replace('opacity-100', 'opacity-0');
+          moon.classList.replace('rotate-0', 'rotate-90');
+          
+          // Warna gunung siang
           mBack.style.fill = '#6ba4c7';
           mFront.style.fill = '#4a84a8';
           mGround.style.fill = '#2c5c7a';
