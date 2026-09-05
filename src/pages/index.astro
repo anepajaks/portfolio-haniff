@@ -5,54 +5,107 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Haniff's Portfolio</title>
-    <!-- Import Font Poppins & Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-    
-    <!-- TAMBAH is:inline DI SINI SUPAYA DESIGN TAK HILANG -->
     <script src="https://cdn.tailwindcss.com" is:inline></script>
     
     <style>
-      body { font-family: 'Montserrat', sans-serif; transition: background-color 0.5s, color 0.5s; }
-      h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+      body { font-family: 'Montserrat', sans-serif; transition: background-color 0.8s ease, color 0.8s ease; }
+      h1, h2, h3, nav a { font-family: 'Poppins', sans-serif; }
       
-      /* Animasi Matahari & Bulan Berpusing */
-      .toggle-icon { transition: transform 0.6s ease-in-out; }
+      /* Dark/Light Mode Backgrounds */
+      .light-mode { background: linear-gradient(to bottom, #87CEEB, #e0f6ff); color: #2d3748; }
+      .dark-mode { background: linear-gradient(to bottom, #0B1021, #1B2735); color: #f3f4f6; }
+      
+      /* Animasi Butang Toggle */
+      .toggle-icon { transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
       .rotate-moon { transform: rotate(180deg); }
       
-      /* Dark Mode Colors */
-      .dark-mode { background-color: #1a1a1a; color: #f3f4f6; }
-      .light-mode { background-color: #fdfbf7; color: #2d3748; }
+      /* Animasi Awan (Siang) */
+      .cloud {
+        position: absolute;
+        background: white;
+        border-radius: 50px;
+        opacity: 0.8;
+        animation: drift linear infinite;
+      }
+      .cloud::before, .cloud::after {
+        content: ''; position: absolute; background: white; border-radius: 50%;
+      }
+      @keyframes drift {
+        from { transform: translateX(-10vw); }
+        to { transform: translateX(110vw); }
+      }
+      
+      /* Animasi Bintang (Malam) */
+      .star {
+        position: absolute;
+        background: white;
+        border-radius: 50%;
+        animation: twinkle 2s infinite ease-in-out alternate;
+      }
+      @keyframes twinkle {
+        0% { opacity: 0.2; transform: scale(0.8); }
+        100% { opacity: 1; transform: scale(1.2); }
+      }
+
+      /* Sembunyikan elemen ikut mode */
+      .light-mode .star-container { display: none; }
+      .dark-mode .cloud-container { display: none; }
     </style>
   </head>
   
-  <body class="light-mode min-h-screen flex items-center justify-center overflow-hidden relative">
+  <body class="light-mode min-h-screen overflow-hidden relative">
     
-    <!-- Butang Toggle Siang/Malam -->
-    <button id="theme-toggle" class="absolute top-8 right-8 w-14 h-14 bg-gray-200 dark:bg-gray-800 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform z-50">
-      <div id="icon-container" class="toggle-icon text-2xl relative w-full h-full flex items-center justify-center">
-        <!-- Matahari -->
-        <span id="sun" class="absolute transition-opacity duration-300">☀️</span>
-        <!-- Bulan -->
-        <span id="moon" class="absolute opacity-0 transition-opacity duration-300">🌙</span>
-      </div>
-    </button>
+    <!-- Environment: Awan (Siang) -->
+    <div class="cloud-container absolute inset-0 z-0 pointer-events-none">
+      <div class="cloud w-32 h-10 top-20" style="animation-duration: 35s; left: -10%;"></div>
+      <div class="cloud w-48 h-16 top-40" style="animation-duration: 45s; left: -20%;"></div>
+      <div class="cloud w-24 h-8 top-10" style="animation-duration: 25s; left: -5%;"></div>
+    </div>
 
-    <!-- Main Content Container (Grid) -->
-    <main class="w-full max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 items-center h-screen">
+    <!-- Environment: Bintang (Malam) -->
+    <div class="star-container absolute inset-0 z-0 pointer-events-none">
+      <div class="star w-1 h-1 top-10 left-[20%]"></div>
+      <div class="star w-2 h-2 top-32 left-[50%]" style="animation-delay: 0.5s;"></div>
+      <div class="star w-1.5 h-1.5 top-20 left-[80%]" style="animation-delay: 1s;"></div>
+      <div class="star w-1 h-1 top-64 left-[30%]" style="animation-delay: 1.5s;"></div>
+      <div class="star w-2 h-2 top-48 left-[70%]" style="animation-delay: 0.2s;"></div>
+    </div>
+
+    <!-- Navigation Bar (Menu Atas) -->
+    <header class="absolute top-0 w-full px-8 py-6 flex justify-between items-center z-50">
+      <div class="text-2xl font-bold tracking-wider">HANIFF.</div>
+      <nav class="hidden md:flex gap-8 font-semibold text-lg">
+        <a href="/" class="hover:text-blue-500 transition">Home</a>
+        <a href="/about" class="hover:text-blue-500 transition">About</a>
+        <a href="/project" class="hover:text-blue-500 transition">Projects</a>
+        <a href="/contact" class="hover:text-blue-500 transition">Contact</a>
+      </nav>
       
-      <!-- Kiri: Teks (Ambil 1/4 ruang) -->
-      <div class="col-span-1 md:col-span-1 z-10 flex flex-col gap-4">
-        <h2 class="text-xl text-[#8B5A2B] uppercase tracking-widest font-semibold">Hi, Welcome to</h2>
+      <!-- Butang Toggle Siang/Malam (Dialih ke dalam Navbar) -->
+      <button id="theme-toggle" class="w-12 h-12 bg-white/30 dark:bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+        <div id="icon-container" class="toggle-icon text-2xl relative w-full h-full flex items-center justify-center">
+          <span id="sun" class="absolute transition-opacity duration-300">☀️</span>
+          <span id="moon" class="absolute opacity-0 transition-opacity duration-300 transform rotate-180">🌙</span>
+        </div>
+      </button>
+    </header>
+
+    <!-- Main Content -->
+    <main class="w-full max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 items-center h-screen relative z-10 pt-20">
+      
+      <!-- Kiri: Teks -->
+      <div class="col-span-1 md:col-span-1 flex flex-col gap-4">
+        <h2 class="text-xl text-[#8B5A2B] dark:text-[#D2B48C] uppercase tracking-widest font-semibold">Hi, Welcome to</h2>
         <h1 class="text-5xl md:text-6xl font-bold leading-tight">Haniff's<br><span class="text-blue-500">Portfolio</span></h1>
         <p class="text-lg opacity-80 mt-2">Helpdesk Associate transitioning to IT & Networking Engineer.</p>
         
         <div class="mt-6 flex gap-4">
-          <a href="/about" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition">About Me</a>
-          <a href="/project" class="px-6 py-3 border-2 border-blue-600 text-blue-600 dark:text-blue-400 font-semibold rounded-lg hover:bg-blue-50 dark:hover:bg-gray-800 transition">My Games</a>
+          <a href="/about" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition shadow-lg">Discover More</a>
         </div>
       </div>
 
-      <!-- Kanan: Karakter (Ambil 3/4 ruang) -->
+      <!-- Kanan: Karakter -->
       <div class="col-span-1 md:col-span-3 relative h-full flex items-end justify-end pb-10">
         <!-- Bubble Speech -->
         <div class="absolute top-1/4 right-1/4 bg-white dark:bg-gray-800 text-black dark:text-white px-6 py-4 rounded-2xl shadow-xl z-20 animate-bounce">
@@ -60,12 +113,12 @@
           <div class="absolute -bottom-2 right-10 transform rotate-45 w-4 h-4 bg-white dark:bg-gray-800"></div>
         </div>
         
-        <!-- Placeholder Karakter 3D -->
-        <img src="https://via.placeholder.com/600x800.png?text=3D+Character+Hoodie+Biru" alt="Haniff 3D Character" class="h-[70vh] object-contain drop-shadow-2xl z-10">
+        <!-- GAMBAR KARAKTER SEBENAR -->
+        <!-- Pastikan kau dah upload gambar bernama character.png letak luar sekali atau dalam folder public -->
+        <img src="/character.png" alt="Haniff 3D Character" onerror="this.src='https://via.placeholder.com/600x800.png?text=Upload+character.png+kat+GitHub'" class="h-[75vh] object-contain drop-shadow-2xl z-10 transition-transform hover:scale-105 duration-500">
       </div>
     </main>
 
-    <!-- TAMBAH is:inline DI SINI JUGA -->
     <script is:inline>
       const btn = document.getElementById('theme-toggle');
       const body = document.body;
@@ -75,6 +128,7 @@
 
       btn.addEventListener('click', () => {
         iconContainer.classList.toggle('rotate-moon');
+        
         if (body.classList.contains('light-mode')) {
           body.classList.replace('light-mode', 'dark-mode');
           sun.classList.replace('opacity-100', 'opacity-0');
