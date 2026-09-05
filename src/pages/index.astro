@@ -4,9 +4,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Haniff's Portfolio</title>
-    <!-- Import Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <title>Portfolio Haniff</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com" is:inline></script>
     
     <style>
@@ -14,137 +13,92 @@
       h1, h2, h3, nav a { font-family: 'Poppins', sans-serif; }
       
       /* Latar Belakang Langit */
-      #sky { transition: background 1s ease-in-out; }
-      .sky-light { background: linear-gradient(to bottom, #87CEEB, #f0f8ff); }
-      .sky-dark { background: linear-gradient(to bottom, #0B1021, #1B2735); }
+      .sky-light { background: linear-gradient(to bottom, #87CEEB, #e0f6ff); color: #1f2937; }
+      .sky-dark { background: linear-gradient(to bottom, #0f2027, #203a43); color: #f9fafb; }
       
-      /* Warna Teks */
-      .text-light { color: #2d3748; }
-      .text-dark { color: #f3f4f6; }
-      
-      /* Warna Gunung (Transition) */
-      .mountain-back, .mountain-front, .ground { transition: fill 1s ease-in-out; }
+      /* Rumput */
+      .grass-light { fill: #4ade80; } /* Hijau cerah */
+      .grass-dark { fill: #064e3b; }  /* Hijau/Biru sangat gelap untuk malam */
+
+      /* Animasi Putaran Matahari/Bulan */
+      #celestial-wheel { transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
     </style>
   </head>
   
-  <body class="relative h-screen w-screen">
+  <body id="body-bg" class="sky-light relative h-screen w-screen flex flex-col items-center transition-colors duration-1000">
     
-    <!-- 1. LANGIT -->
-    <div id="sky" class="sky-light absolute inset-0 z-0"></div>
-
-    <!-- 2. TAYAR MATAHARI & BULAN BERPUSING -->
-    <!-- Kedudukan di tengah bawah, terlindung di sebalik gunung -->
-    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] md:w-[1200px] md:h-[1200px] z-[1]">
-      <div id="celestial-wheel" class="relative w-full h-full rounded-full transition-transform duration-[1.5s] ease-in-out" style="transform: rotate(0deg);">
-        <!-- Matahari di atas -->
-        <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="Sun" class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 drop-shadow-[0_0_30px_rgba(255,215,0,1)]">
-        <!-- Bulan di bawah (Terbalik supaya bila pusing dia tegak) -->
-        <img src="https://cdn-icons-png.flaticon.com/512/1296/1296066.png" alt="Moon" class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 rotate-180 w-20 h-20 drop-shadow-[0_0_20px_rgba(255,255,255,0.8)]">
-      </div>
-    </div>
-
-    <!-- 3. PEMANDANGAN GUNUNG (SVG) -->
-    <!-- Ini akan block separuh bawah tayar matahari/bulan tadi -->
-    <svg viewBox="0 0 1440 400" preserveAspectRatio="none" class="absolute bottom-0 w-full h-[30vh] md:h-[40vh] z-[2]">
-      <!-- Gunung Belakang -->
-      <path id="m-back" class="mountain-back" fill="#6ba4c7" d="M0,400 L0,200 L200,100 L400,250 L700,50 L1000,250 L1250,150 L1440,250 L1440,400 Z" />
-      <!-- Gunung Depan -->
-      <path id="m-front" class="mountain-front" fill="#4a84a8" d="M0,400 L0,300 L250,150 L550,300 L850,100 L1150,300 L1440,200 L1440,400 Z" />
-      <!-- Tanah Bawah -->
-      <path id="m-ground" class="ground" fill="#2c5c7a" d="M0,400 L0,350 L400,280 L900,320 L1440,280 L1440,400 Z" />
-    </svg>
-
-    <!-- 4. NAVIGATION BAR -->
-    <header id="navbar" class="absolute top-0 w-full px-8 py-6 flex justify-between items-center z-50 text-light transition-colors duration-1000">
-      <div class="text-2xl font-bold tracking-wider">HANIFF.</div>
-      <nav class="hidden md:flex gap-8 font-semibold text-lg drop-shadow-md">
-        <a href="/" class="hover:text-blue-500 transition">Home</a>
-        <a href="/about" class="hover:text-blue-500 transition">About</a>
-        <a href="/project" class="hover:text-blue-500 transition">Projects</a>
-        <a href="/contact" class="hover:text-blue-500 transition">Contact</a>
+    <!-- NAVIGATION BAR -->
+    <header class="absolute top-0 w-full p-6 flex justify-center md:justify-end items-center z-50">
+      <nav class="flex gap-6 font-semibold text-sm md:text-lg bg-white/20 dark:bg-black/20 backdrop-blur-md px-6 py-2 rounded-full shadow-sm transition-colors">
+        <a href="/" class="hover:text-blue-600 transition">Home</a>
+        <a href="/about" class="hover:text-blue-600 transition">About</a>
+        <a href="/project" class="hover:text-blue-600 transition">Projects</a>
+        <a href="/contact" class="hover:text-blue-600 transition">Contact</a>
       </nav>
       
-      <!-- Butang Toggle -->
-      <button id="theme-toggle" class="px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full font-bold shadow-lg hover:scale-105 transition-transform">
-        Day / Night
+      <!-- Butang Toggle Day/Night -->
+      <button id="theme-toggle" class="ml-4 w-10 h-10 bg-white/50 dark:bg-black/50 rounded-full flex items-center justify-center hover:scale-110 transition shadow backdrop-blur-md z-50">
+        🌓
       </button>
     </header>
 
-    <!-- 5. MAIN CONTENT (Teks Kiri & Karakter Kanan) -->
-    <main id="main-content" class="absolute inset-0 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 items-center z-10 text-light transition-colors duration-1000 pt-10">
-      
-      <!-- KIRI: Teks (1/4 ruang) -->
-      <div class="col-span-1 flex flex-col gap-4 drop-shadow-lg">
-        <h2 id="subtitle" class="text-xl text-[#8B5A2B] uppercase tracking-widest font-semibold transition-colors duration-1000">Hi, Welcome to</h2>
-        <h1 class="text-5xl md:text-6xl font-bold leading-tight">Haniff's<br><span class="text-blue-500">Portfolio</span></h1>
-        <p class="text-lg opacity-90 mt-2 font-medium">Helpdesk Associate transitioning to IT & Networking Engineer.</p>
-        
-        <div class="mt-6 flex gap-4">
-          <a href="/project" class="px-8 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition shadow-lg hover:scale-105">View My Games</a>
-        </div>
+    <!-- TEXT CONTENT (Terapung di Langit) -->
+    <div class="absolute top-[12%] md:top-[15%] w-full px-6 text-center z-40 drop-shadow-md">
+      <h2 class="text-lg md:text-xl text-blue-600 dark:text-blue-400 font-bold uppercase tracking-widest transition-colors">Hi, I'm Haniff 👋</h2>
+      <h1 class="text-4xl md:text-6xl font-extrabold mt-2 leading-tight">Helpdesk to <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-400">IT Engineer</span></h1>
+      <p class="mt-4 text-sm md:text-lg opacity-80 font-medium max-w-2xl mx-auto">
+        I solve problems, build networks, and create games. Check out my Coffee Lab & Networking projects!
+      </p>
+      <div class="mt-6 flex justify-center gap-4">
+        <a href="/project" class="px-6 py-3 md:px-8 md:py-3 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition shadow-lg hover:-translate-y-1">Play My Games</a>
       </div>
+    </div>
 
-      <!-- KANAN: Karakter 3D (3/4 ruang) -->
-      <div class="col-span-3 relative h-full flex items-end justify-end pb-10">
-        <!-- Bubble Speech -->
-        <div class="absolute top-[20%] right-[30%] bg-white text-black px-6 py-4 rounded-3xl shadow-2xl z-20 animate-bounce">
-          <p class="font-bold text-lg">Hi, Welcome to Portfolio Haniff! 👋</p>
-          <!-- Segitiga Bubble -->
-          <div class="absolute -bottom-3 right-12 transform rotate-45 w-6 h-6 bg-white"></div>
-        </div>
-        
-        <!-- Gambar Karakter 3D (Boy in Blue Hoodie Waving) -->
-        <img src="https://cdni.iconscout.com/illustration/premium/thumb/boy-waving-hand-4623773-3837887.png" alt="Haniff 3D Character" class="h-[80vh] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.3)] z-10 hover:scale-105 transition-transform duration-500 origin-bottom">
+    <!-- TAYAR MATAHARI & BULAN (Z-10: Belakang Rumput) -->
+    <!-- Paksi putaran duduk di tengah bawah skrin, jadi ia akan membentuk arc / lengkungan -->
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[400px] h-[400px] md:w-[700px] md:h-[700px] z-10 pointer-events-none">
+      <div id="celestial-wheel" class="relative w-full h-full" style="transform: rotate(0deg);">
+        <!-- Matahari -->
+        <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="Sun" class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 md:w-32 md:h-32 drop-shadow-[0_0_40px_rgba(255,215,0,1)]">
+        <!-- Bulan -->
+        <img src="https://cdn-icons-png.flaticon.com/512/1296/1296066.png" alt="Moon" class="absolute -bottom-10 left-1/2 -translate-x-1/2 rotate-180 w-16 h-16 md:w-28 md:h-28 drop-shadow-[0_0_30px_rgba(255,255,255,0.8)]">
       </div>
-    </main>
+    </div>
 
-    <!-- SCRIPT LOGIK ANIMASI -->
+    <!-- RUMPUT / BUKIT (Z-20: Depan Matahari) -->
+    <!-- Dilukis guna SVG membentuk bukit lembut -->
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none" class="absolute bottom-0 w-full h-[30vh] md:h-[35vh] z-20">
+      <path id="grass" class="grass-light transition-colors duration-1000" d="M0,320 L0,150 C480,0 960,0 1440,150 L1440,320 Z"></path>
+    </svg>
+
+    <!-- KARAKTER BARING (Z-30: Atas Rumput) -->
+    <img src="https://cdn3d.iconscout.com/3d/premium/thumb/boy-using-laptop-while-lying-down-5692601-4743371.png" alt="Haniff Lying on Grass" class="absolute bottom-[23vh] md:bottom-[28vh] left-1/2 -translate-x-1/2 w-52 md:w-80 z-30 drop-shadow-[0_20px_20px_rgba(0,0,0,0.3)] hover:scale-105 transition-transform duration-500">
+
+    <!-- SCRIPT LOGIK -->
     <script is:inline>
       const btn = document.getElementById('theme-toggle');
-      const sky = document.getElementById('sky');
+      const bodyBg = document.getElementById('body-bg');
       const wheel = document.getElementById('celestial-wheel');
-      const navbar = document.getElementById('navbar');
-      const mainContent = document.getElementById('main-content');
-      const subtitle = document.getElementById('subtitle');
+      const grass = document.getElementById('grass');
       
-      // Elemen Gunung
-      const mBack = document.getElementById('m-back');
-      const mFront = document.getElementById('m-front');
-      const mGround = document.getElementById('m-ground');
-
       let isDark = false;
       let rotationDegree = 0;
 
       btn.addEventListener('click', () => {
         isDark = !isDark;
         
-        // 1. Pusingkan tayar (tambah 180 darjah setiap kali klik)
+        // Putaran tayar
         rotationDegree += 180;
         wheel.style.transform = `rotate(${rotationDegree}deg)`;
         
-        // 2. Tukar warna environment
         if (isDark) {
-          // Mode Malam
-          sky.classList.replace('sky-light', 'sky-dark');
-          navbar.classList.replace('text-light', 'text-dark');
-          mainContent.classList.replace('text-light', 'text-dark');
-          subtitle.classList.replace('text-[#8B5A2B]', 'text-[#D2B48C]'); // Coklat terang sikit malam
-          
-          // Gelapkan Gunung jadi siluet malam
-          mBack.style.fill = '#1a2b4c';
-          mFront.style.fill = '#0f1a30';
-          mGround.style.fill = '#080d1a';
+          bodyBg.classList.replace('sky-light', 'sky-dark');
+          grass.classList.replace('grass-light', 'grass-dark');
+          document.documentElement.classList.add('dark');
         } else {
-          // Mode Siang
-          sky.classList.replace('sky-dark', 'sky-light');
-          navbar.classList.replace('text-dark', 'text-light');
-          mainContent.classList.replace('text-dark', 'text-light');
-          subtitle.classList.replace('text-[#D2B48C]', 'text-[#8B5A2B]');
-          
-          // Cerahkan Gunung balik
-          mBack.style.fill = '#6ba4c7';
-          mFront.style.fill = '#4a84a8';
-          mGround.style.fill = '#2c5c7a';
+          bodyBg.classList.replace('sky-dark', 'sky-light');
+          grass.classList.replace('grass-dark', 'grass-light');
+          document.documentElement.classList.remove('dark');
         }
       });
     </script>
