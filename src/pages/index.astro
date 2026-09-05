@@ -7,7 +7,10 @@
     <title>Haniff's Portfolio</title>
     <!-- Import Font Poppins & Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- TAMBAH is:inline DI SINI SUPAYA DESIGN TAK HILANG -->
+    <script src="https://cdn.tailwindcss.com" is:inline></script>
+    
     <style>
       body { font-family: 'Montserrat', sans-serif; transition: background-color 0.5s, color 0.5s; }
       h1, h2, h3 { font-family: 'Poppins', sans-serif; }
@@ -62,7 +65,8 @@
       </div>
     </main>
 
-    <script>
+    <!-- TAMBAH is:inline DI SINI JUGA -->
+    <script is:inline>
       const btn = document.getElementById('theme-toggle');
       const body = document.body;
       const iconContainer = document.getElementById('icon-container');
