@@ -1,0 +1,7 @@
+---
+import Icon from './Icon.astro';
+---
+<button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to night theme" aria-pressed="false" hidden>
+  <span class="theme-toggle__icon"><Icon name="sun" class="theme-day"/><Icon name="moon" class="theme-night"/></span>
+  <span class="theme-day">Day</span><span class="theme-night">Night</span>
+</button>

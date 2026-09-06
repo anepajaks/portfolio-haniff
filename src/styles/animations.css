@@ -1,0 +1,9 @@
+body,.project-card,.site-footer{transition:background-color .5s ease,color .5s ease,border-color .5s ease}
+.landscape{transition:opacity .8s ease}
+.primary-button{transition:background-color .2s ease,transform .2s ease}
+@media(prefers-reduced-motion:no-preference){
+ .hero-copy{animation:arrive .7s ease both}
+ .character-stage{animation:arrive .9s .1s ease both}
+ @keyframes arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}

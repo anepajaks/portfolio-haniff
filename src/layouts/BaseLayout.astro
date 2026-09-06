@@ -1,0 +1,37 @@
+---
+import '../styles/tokens.css';
+import '../styles/global.css';
+import '../styles/animations.css';
+interface Props { title?: string; description?: string; }
+const {title='Haniff Razak — Helpdesk, IT & Networking',description='A personal portfolio by Haniff Razak. Exploring technology, networks and coffee through interactive learning projects.'}=Astro.props;
+---
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content={description}/>
+    <meta name="theme-color" content="#edf7ff"/>
+    <title>{title}</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+    <link rel="preload" href="/fonts/plus-jakarta-sans-latin-variable.woff2" as="font" type="font/woff2" crossorigin/>
+    <script is:inline>
+      // Apply the saved theme before the first paint; storage may be blocked.
+      (() => {
+        let theme = 'light';
+        try {
+          const saved = localStorage.getItem('haniff-theme');
+          if (saved === 'light' || saved === 'dark') theme = saved;
+          else if (matchMedia('(prefers-color-scheme: dark)').matches) theme = 'dark';
+        } catch { if (matchMedia('(prefers-color-scheme: dark)').matches) theme = 'dark'; }
+        document.documentElement.dataset.theme = theme;
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content',theme === 'dark'?'#09162c':'#edf7ff');
+      })();
+    </script>
+  </head>
+  <body id="home">
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <slot/>
+    <script src="../scripts/theme.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+---
+interface Props { pose?: 'main'; }
+const { pose = 'main' } = Astro.props;
+// The selected pose is composited into the landscape for clean edges.
+// Additional poses can be added to this map when their local artwork is ready.
+const poses = { main: { day:'/images/horizon-day.webp', night:'/images/horizon-night.webp' } };
+const asset = poses[pose];
+---
+<div class="hero-landscape" role="img" aria-label="Haniff’s chibi character, wearing a cream hoodie with his hands in his pockets, overlooking a mountain landscape.">
+  <img class="landscape landscape--day" src={asset.day} width="1672" height="941" alt="" loading="eager" decoding="async" fetchpriority="high"/>
+  <img class="landscape landscape--night" src={asset.night} width="1672" height="941" alt="" loading="eager" decoding="async"/>
+</div>

@@ -1,0 +1,18 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import Icon from './Icon.astro';
+const links = [{href:'#home',label:'Home'},{href:'#about',label:'About'},{href:'#projects',label:'Projects'},{href:'#contact',label:'Contact'}];
+---
+<header class="site-header">
+  <div class="header-inner">
+    <!-- Intentionally no name or logo in the top-left corner. -->
+    <nav class="desktop-nav" aria-label="Main navigation">
+      {links.map((link)=><a href={link.href}>{link.label}</a>)}
+    </nav>
+    <details class="mobile-menu">
+      <summary aria-label="Open navigation"><Icon name="menu" class="menu-open"/><Icon name="close" class="menu-close"/><span>Menu</span></summary>
+      <nav aria-label="Mobile navigation">{links.map((link)=><a href={link.href}>{link.label}</a>)}</nav>
+    </details>
+    <ThemeToggle />
+  </div>
+</header>

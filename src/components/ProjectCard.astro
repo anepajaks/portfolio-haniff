@@ -1,0 +1,26 @@
+---
+import type { Project } from '../data/projects';
+import Icon from './Icon.astro';
+interface Props { project: Project; }
+const { project } = Astro.props;
+---
+<article class:list={['project-card',`project-card--${project.id}`]} aria-labelledby={`${project.id}-title`}>
+  <div class="project-art" aria-hidden="true">
+    {project.id === 'network' ? <svg class="network-diagram" viewBox="0 0 200 180" fill="none" focusable="false">
+      <path class="network-line" d="M100 62v34H45v30m55-30h55v30"/>
+      <rect class="network-node" x="72" y="27" width="56" height="36" rx="8"/>
+      <path class="network-port" d="M82 44h6m9 0h6m9 0h6"/>
+      <rect class="network-node" x="23" y="125" width="44" height="30" rx="6"/>
+      <rect class="network-node" x="133" y="125" width="44" height="30" rx="6"/>
+      <path class="network-line" d="M45 155v9m-12 0h24m98-9v9m-12 0h24"/>
+      <circle class="network-signal" cx="100" cy="96" r="5"/>
+    </svg> : <img src="/images/coffee-lab.webp" width="360" height="360" alt="" loading="lazy" decoding="async"/>}
+  </div>
+  <div class="project-copy">
+    <p class="project-category">{project.category}</p>
+    <h3 id={`${project.id}-title`}>{project.title}</h3>
+    <p class="project-status"><Icon name={project.id === 'network'?'network':'coffee'} size={13}/>{project.status}</p>
+    <p class="project-description">{project.description}</p>
+    {project.href && <a class="project-link" href={project.href}>Explore {project.title}<Icon name="arrow" size={17}/></a>}
+  </div>
+</article>
