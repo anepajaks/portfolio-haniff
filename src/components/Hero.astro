@@ -3,7 +3,14 @@ import HaniffCharacter from './HaniffCharacter.astro';
 import Icon from './Icon.astro';
 ---
 <section class="hero" aria-labelledby="hero-title">
-  <HaniffCharacter />
+  <div class="hero-landscape" aria-hidden="true">
+    <img class="landscape landscape--day" src="/images/landscape-day.webp" width="1672" height="941" alt="" fetchpriority="high"/>
+    <img class="landscape landscape--night" src="/images/landscape-night.webp" width="1672" height="941" alt=""/>
+  </div>
+  <div class="sky-indicator" aria-hidden="true">
+    <Icon name="sun" size={64} class="sky-sun"/>
+    <Icon name="moon" size={64} class="sky-moon"/>
+  </div>
   <div class="hero-content content-width">
     <div class="hero-copy" id="about">
       <p class="eyebrow">HELLO, I’M</p>
@@ -12,6 +19,6 @@ import Icon from './Icon.astro';
       <p class="hero-description">I build interactive experiences around technology, networks and coffee.</p>
       <a href="#projects" class="primary-button">Explore My Work <Icon name="arrow"/></a>
     </div>
-    <div class="character-stage" aria-hidden="true"></div>
+    <HaniffCharacter />
   </div>
 </section>

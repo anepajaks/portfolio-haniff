@@ -1,12 +1,15 @@
 ---
-interface Props { pose?: 'main'; }
-const { pose = 'main' } = Astro.props;
-// The selected pose is composited into the landscape for clean edges.
-// Additional poses can be added to this map when their local artwork is ready.
-const poses = { main: { day:'/images/horizon-day.webp', night:'/images/horizon-night.webp' } };
+interface Props { pose?: 'wave'; }
+const { pose = 'wave' } = Astro.props;
+const poses = { wave: { day:'/characters/haniff-wave-day.webp', night:'/characters/haniff-wave-night.webp' } };
 const asset = poses[pose];
 ---
-<div class="hero-landscape" role="img" aria-label="Haniff’s chibi character, wearing a cream hoodie with his hands in his pockets, overlooking a mountain landscape.">
-  <img class="landscape landscape--day" src={asset.day} width="1672" height="941" alt="" loading="eager" decoding="async" fetchpriority="high"/>
-  <img class="landscape landscape--night" src={asset.night} width="1672" height="941" alt="" loading="eager" decoding="async"/>
+<div class="character-stage" data-character>
+  <p class="greeting" id="character-greeting">Hello!<br/><span>Welcome to Haniff’s portfolio.</span></p>
+  <button class="character-button" type="button" data-wave aria-label="Say hello to Haniff again" aria-describedby="character-greeting" disabled>
+    <span class="wave-frame wave-frame--day" aria-hidden="true"><img src={asset.day} alt="" width="1254" height="1254" decoding="async"/></span>
+    <span class="wave-frame wave-frame--night" aria-hidden="true"><img src={asset.night} alt="" width="1254" height="1254" decoding="async"/></span>
+  </button>
+  <span class="wave-hint" data-wave-hint hidden>Click to say hello again</span>
 </div>
+<script src="../scripts/character.ts"></script>
