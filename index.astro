@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Footer from '../components/Footer.astro';
+import { projects } from '../data/projects';
+---
+<BaseLayout>
+  <Header/>
+  <main id="main-content">
+    <Hero/>
+    <section id="projects" class="work-section" aria-labelledby="work-title">
+      <div class="content-width">
+        <div class="section-heading"><h2 id="work-title">My Work</h2><p>Two interests. Plenty to explore.<br/>Here’s what I’m working on.</p></div>
+        <div class="project-grid">{projects.map(project=><ProjectCard project={project}/>)}</div>
+      </div>
+    </section>
+  </main>
+  <Footer/>
+</BaseLayout>
