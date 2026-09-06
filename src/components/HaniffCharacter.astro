@@ -1,15 +1,16 @@
 ---
 interface Props { pose?: 'wave'; }
 const { pose = 'wave' } = Astro.props;
-const poses = { wave: { day:'/characters/haniff-wave-day.webp', night:'/characters/haniff-wave-night.webp' } };
+const poses = { wave: { day:'/characters/haniff-grounded-day.webp', night:'/characters/haniff-grounded-night.webp' } };
 const asset = poses[pose];
 ---
 <div class="character-stage" data-character>
-  <p class="greeting" id="character-greeting">Hello!<br/><span>Welcome to Haniff’s portfolio.</span></p>
-  <button class="character-button" type="button" data-wave aria-label="Say hello to Haniff again" aria-describedby="character-greeting" disabled>
-    <span class="wave-frame wave-frame--day" aria-hidden="true"><img src={asset.day} alt="" width="1254" height="1254" decoding="async"/></span>
-    <span class="wave-frame wave-frame--night" aria-hidden="true"><img src={asset.night} alt="" width="1254" height="1254" decoding="async"/></span>
-  </button>
-  <span class="wave-hint" data-wave-hint hidden>Click to say hello again</span>
+  <div class="grounded-scene">
+    <span class="wave-frame wave-frame--day" aria-hidden="true"><img src={asset.day} alt="" width="1672" height="941" decoding="async"/></span>
+    <span class="wave-frame wave-frame--night" aria-hidden="true"><img src={asset.night} alt="" width="1672" height="941" decoding="async"/></span>
+    <p class="greeting" id="character-greeting">Hello!<br/><span>Welcome to Haniff’s portfolio.</span></p>
+    <button class="character-button" type="button" data-wave aria-label="Say hello to Haniff again" aria-describedby="character-greeting" disabled></button>
+    <span class="wave-hint" data-wave-hint hidden>Click to say hello again</span>
+  </div>
 </div>
 <script src="../scripts/character.ts"></script>
