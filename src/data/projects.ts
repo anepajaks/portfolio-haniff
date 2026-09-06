@@ -7,7 +7,7 @@ export type Project = {
   href?: string;
 };
 
-// Add a local /labs/... URL only when that lab is ready for visitors.
+// Coffee Lab has a standalone route so 3D assets are loaded only when opened.
 export const projects: Project[] = [
   {
     id: 'network',
@@ -20,7 +20,8 @@ export const projects: Project[] = [
     id: 'coffee',
     title: 'Coffee Lab',
     category: 'COFFEE & CURIOSITY',
-    description: 'A miniature coffee shop to explore the craft, from the first bean to the final pour.',
-    status: 'In development',
+    description: 'Step into a miniature neighbourhood, explore the café and take your place behind the bar.',
+    status: 'Exploration preview',
+    href: '/coffee-lab/',
   },
 ];

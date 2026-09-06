@@ -1,0 +1,855 @@
+{
+  "version": 1,
+  "selection": {
+    "barista": "A",
+    "people": "B",
+    "vehicles": "A",
+    "equipment": "A",
+    "interior": "A",
+    "exterior": "A"
+  },
+  "units": "metres",
+  "up": "+Y",
+  "forward": "+Z",
+  "status": "custom procedural 3D asset pass; review before game integration",
+  "models": [
+    {
+      "id": "barista-A",
+      "category": "characters",
+      "file": "models/barista-A.glb",
+      "bytes": 974876,
+      "triangles": 28096,
+      "meshes": 11,
+      "bones": 17,
+      "skins": 11,
+      "animations": [
+        "Idle",
+        "Walk",
+        "Greeting"
+      ],
+      "bounds": {
+        "min": [
+          -0.293546506138735,
+          -8.290936403183619e-10,
+          -0.20529069916106932
+        ],
+        "max": [
+          0.293546506138735,
+          1.6279360721277634,
+          0.21920057533438814
+        ]
+      },
+      "dimensions": [
+        0.58709301227747,
+        1.627936072956857,
+        0.4244912744954574
+      ]
+    },
+    {
+      "id": "npc-curly-B",
+      "category": "characters",
+      "file": "models/npc-curly-B.glb",
+      "bytes": 1229768,
+      "triangles": 37348,
+      "meshes": 10,
+      "bones": 17,
+      "skins": 10,
+      "animations": [
+        "Idle",
+        "Walk",
+        "Greeting"
+      ],
+      "bounds": {
+        "min": [
+          -0.3059999942779541,
+          -8.642673243741683e-10,
+          -0.21400000154972076
+        ],
+        "max": [
+          0.32499998807907104,
+          1.6970000267028809,
+          0.2199999988079071
+        ]
+      },
+      "dimensions": [
+        0.6309999823570251,
+        1.6970000275671482,
+        0.43400000035762787
+      ]
+    },
+    {
+      "id": "npc-cyclist-B",
+      "category": "characters",
+      "file": "models/npc-cyclist-B.glb",
+      "bytes": 1009160,
+      "triangles": 30128,
+      "meshes": 10,
+      "bones": 17,
+      "skins": 10,
+      "animations": [
+        "Idle",
+        "Walk",
+        "Greeting"
+      ],
+      "bounds": {
+        "min": [
+          -0.3809302476949471,
+          -9.145154107506928e-10,
+          -0.2264418621049371
+        ],
+        "max": [
+          0.32379069161969565,
+          1.7956628189530488,
+          0.232790696413018
+        ]
+      },
+      "dimensions": [
+        0.7047209393146427,
+        1.7956628198675642,
+        0.4592325585179551
+      ]
+    },
+    {
+      "id": "npc-elder-B",
+      "category": "characters",
+      "file": "models/npc-elder-B.glb",
+      "bytes": 979004,
+      "triangles": 29120,
+      "meshes": 11,
+      "bones": 17,
+      "skins": 11,
+      "animations": [
+        "Idle",
+        "Walk",
+        "Greeting"
+      ],
+      "bounds": {
+        "min": [
+          -0.29176743640456093,
+          -8.240687886595674e-10,
+          -0.20976744072381845
+        ],
+        "max": [
+          0.29176743640456093,
+          1.6800464779831643,
+          0.20976744072381845
+        ]
+      },
+      "dimensions": [
+        0.5835348728091219,
+        1.6800464788072331,
+        0.4195348814476369
+      ]
+    },
+    {
+      "id": "npc-creative-B",
+      "category": "characters",
+      "file": "models/npc-creative-B.glb",
+      "bytes": 1036732,
+      "triangles": 30916,
+      "meshes": 11,
+      "bones": 17,
+      "skins": 11,
+      "animations": [
+        "Idle",
+        "Walk",
+        "Greeting"
+      ],
+      "bounds": {
+        "min": [
+          -0.316674412682999,
+          -8.944161428933922e-10,
+          -0.2794186157542606
+        ],
+        "max": [
+          0.33633719696555037,
+          1.769651202268379,
+          0.2380232601318249
+        ]
+      },
+      "dimensions": [
+        0.6530116096485494,
+        1.7696512031627951,
+        0.5174418758860855
+      ]
+    },
+    {
+      "id": "retro-hatchback-A",
+      "category": "vehicles",
+      "file": "models/retro-hatchback-A.glb",
+      "bytes": 582780,
+      "triangles": 27268,
+      "meshes": 51,
+      "bones": 0,
+      "skins": 0,
+      "animations": [
+        "WheelRoll"
+      ],
+      "bounds": {
+        "min": [
+          -0.9229999780654907,
+          8.344650248570673e-9,
+          -1.5499999523162842
+        ],
+        "max": [
+          0.9229999780654907,
+          1.340000033378601,
+          1.5499999523162842
+        ]
+      },
+      "dimensions": [
+        1.8459999561309814,
+        1.3400000250339508,
+        3.0999999046325684
+      ]
+    },
+    {
+      "id": "retro-sedan-A",
+      "category": "vehicles",
+      "file": "models/retro-sedan-A.glb",
+      "bytes": 582800,
+      "triangles": 27268,
+      "meshes": 51,
+      "bones": 0,
+      "skins": 0,
+      "animations": [
+        "WheelRoll"
+      ],
+      "bounds": {
+        "min": [
+          -0.9229999780654907,
+          8.344650248570673e-9,
+          -1.8250000476837158
+        ],
+        "max": [
+          0.9229999780654907,
+          1.340000033378601,
+          1.8250000476837158
+        ]
+      },
+      "dimensions": [
+        1.8459999561309814,
+        1.3400000250339508,
+        3.6500000953674316
+      ]
+    },
+    {
+      "id": "retro-van-A",
+      "category": "vehicles",
+      "file": "models/retro-van-A.glb",
+      "bytes": 662792,
+      "triangles": 30580,
+      "meshes": 51,
+      "bones": 0,
+      "skins": 0,
+      "animations": [
+        "WheelRoll"
+      ],
+      "bounds": {
+        "min": [
+          -0.9229999780654907,
+          8.344650248570673e-9,
+          -1.7274999618530273
+        ],
+        "max": [
+          0.9229999780654907,
+          1.440000057220459,
+          1.725000023841858
+        ]
+      },
+      "dimensions": [
+        1.8459999561309814,
+        1.4400000488758087,
+        3.4524999856948853
+      ]
+    },
+    {
+      "id": "espresso-machine",
+      "category": "equipment",
+      "file": "models/espresso-machine.glb",
+      "bytes": 472364,
+      "triangles": 22412,
+      "meshes": 10,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -0.38999998569488525,
+          4.4703482582342247e-10,
+          -0.25
+        ],
+        "max": [
+          0.38999998569488525,
+          0.6511501669883728,
+          0.26693466305732727
+        ]
+      },
+      "dimensions": [
+        0.7799999713897705,
+        0.651150166541338,
+        0.5169346630573273
+      ]
+    },
+    {
+      "id": "grinder",
+      "category": "equipment",
+      "file": "models/grinder.glb",
+      "bytes": 102308,
+      "triangles": 4996,
+      "meshes": 5,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -0.11500000208616257,
+          0.002499999012798071,
+          -0.14499999582767487
+        ],
+        "max": [
+          0.11500000208616257,
+          0.5699999928474426,
+          0.20499999821186066
+        ]
+      },
+      "dimensions": [
+        0.23000000417232513,
+        0.5674999938346446,
+        0.3499999940395355
+      ]
+    },
+    {
+      "id": "milk-pitcher",
+      "category": "equipment",
+      "file": "models/milk-pitcher.glb",
+      "bytes": 17092,
+      "triangles": 768,
+      "meshes": 2,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -0.0560000017285347,
+          0,
+          -0.0560000017285347
+        ],
+        "max": [
+          0.09053219109773636,
+          0.12300000339746475,
+          0.0560000017285347
+        ]
+      },
+      "dimensions": [
+        0.14653219282627106,
+        0.12300000339746475,
+        0.1120000034570694
+      ]
+    },
+    {
+      "id": "portafilter",
+      "category": "equipment",
+      "file": "models/portafilter.glb",
+      "bytes": 23540,
+      "triangles": 1016,
+      "meshes": 3,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -0.042500000447034836,
+          0,
+          -0.03500000014901161
+        ],
+        "max": [
+          0.042500000447034836,
+          0.03700000047683716,
+          0.14000000059604645
+        ]
+      },
+      "dimensions": [
+        0.08500000089406967,
+        0.03700000047683716,
+        0.17500000074505806
+      ]
+    },
+    {
+      "id": "tamper",
+      "category": "equipment",
+      "file": "models/tamper.glb",
+      "bytes": 11732,
+      "triangles": 416,
+      "meshes": 2,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -0.028999999165534973,
+          -5.215406578829018e-11,
+          -0.028999999165534973
+        ],
+        "max": [
+          0.028999999165534973,
+          0.0819999948143959,
+          0.028999999165534973
+        ]
+      },
+      "dimensions": [
+        0.057999998331069946,
+        0.08199999486654996,
+        0.057999998331069946
+      ]
+    },
+    {
+      "id": "cup",
+      "category": "equipment",
+      "file": "models/cup.glb",
+      "bytes": 29696,
+      "triangles": 1472,
+      "meshes": 2,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -0.0430000014603138,
+          0,
+          -0.0430000014603138
+        ],
+        "max": [
+          0.07097109407186508,
+          0.06499999761581421,
+          0.0430000014603138
+        ]
+      },
+      "dimensions": [
+        0.11397109553217888,
+        0.06499999761581421,
+        0.0860000029206276
+      ]
+    },
+    {
+      "id": "saucer",
+      "category": "equipment",
+      "file": "models/saucer.glb",
+      "bytes": 8640,
+      "triangles": 448,
+      "meshes": 1,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -0.07100000232458115,
+          0,
+          -0.07100000232458115
+        ],
+        "max": [
+          0.07100000232458115,
+          0.01600000075995922,
+          0.07100000232458115
+        ]
+      },
+      "dimensions": [
+        0.1420000046491623,
+        0.01600000075995922,
+        0.1420000046491623
+      ]
+    },
+    {
+      "id": "heritage-equipment-kit",
+      "category": "equipment",
+      "file": "models/heritage-equipment-kit.glb",
+      "bytes": 652456,
+      "triangles": 31528,
+      "meshes": 13,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -0.39250001311302185,
+          -5.215406578829018e-11,
+          -0.25
+        ],
+        "max": [
+          0.7649999856948853,
+          0.6511501669883728,
+          0.6899999976158142
+        ]
+      },
+      "dimensions": [
+        1.157499998807907,
+        0.6511501670405269,
+        0.9399999976158142
+      ]
+    },
+    {
+      "id": "wire-chair",
+      "category": "interior",
+      "file": "models/wire-chair.glb",
+      "bytes": 64124,
+      "triangles": 3020,
+      "meshes": 2,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -0.2441161721944809,
+          -0.0022176834754645824,
+          -0.26693272590637207
+        ],
+        "max": [
+          0.2441161721944809,
+          0.9537508487701416,
+          0.20793040096759796
+        ]
+      },
+      "dimensions": [
+        0.4882323443889618,
+        0.9559685322456062,
+        0.47486312687397003
+      ]
+    },
+    {
+      "id": "pedestal-table",
+      "category": "interior",
+      "file": "models/pedestal-table.glb",
+      "bytes": 14392,
+      "triangles": 640,
+      "meshes": 1,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -0.46000000834465027,
+          0,
+          -0.46000000834465027
+        ],
+        "max": [
+          0.46000000834465027,
+          0.7174999713897705,
+          0.46000000834465027
+        ]
+      },
+      "dimensions": [
+        0.9200000166893005,
+        0.7174999713897705,
+        0.9200000166893005
+      ]
+    },
+    {
+      "id": "banquette",
+      "category": "interior",
+      "file": "models/banquette.glb",
+      "bytes": 102072,
+      "triangles": 5184,
+      "meshes": 3,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -0.9200000166893005,
+          2.38418573772492e-9,
+          -0.3499999940395355
+        ],
+        "max": [
+          0.9200000166893005,
+          0.9950000047683716,
+          0.33500000834465027
+        ]
+      },
+      "dimensions": [
+        1.840000033378601,
+        0.9950000023841858,
+        0.6850000023841858
+      ]
+    },
+    {
+      "id": "fluted-counter",
+      "category": "interior",
+      "file": "models/fluted-counter.glb",
+      "bytes": 211084,
+      "triangles": 11460,
+      "meshes": 3,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -0.9100000262260437,
+          7.1525572131747595e-9,
+          -0.3700000047683716
+        ],
+        "max": [
+          0.9100000262260437,
+          0.9599999785423279,
+          0.42100000381469727
+        ]
+      },
+      "dimensions": [
+        1.8200000524520874,
+        0.9599999713897707,
+        0.7910000085830688
+      ]
+    },
+    {
+      "id": "wave-wall",
+      "category": "interior",
+      "file": "models/wave-wall.glb",
+      "bytes": 42136,
+      "triangles": 908,
+      "meshes": 2,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -1.25,
+          -0.009999999776482582,
+          -0.05999999865889549
+        ],
+        "max": [
+          1.25,
+          1.899999976158142,
+          0.0989999994635582
+        ]
+      },
+      "dimensions": [
+        2.5,
+        1.9099999759346247,
+        0.1589999981224537
+      ]
+    },
+    {
+      "id": "interior-planter",
+      "category": "interior",
+      "file": "models/interior-planter.glb",
+      "bytes": 219400,
+      "triangles": 9624,
+      "meshes": 3,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -0.3116379678249359,
+          0,
+          -0.3435191810131073
+        ],
+        "max": [
+          0.3149999976158142,
+          1.2144397497177124,
+          0.3454340398311615
+        ]
+      },
+      "dimensions": [
+        0.6266379654407501,
+        1.2144397497177124,
+        0.6889532208442688
+      ]
+    },
+    {
+      "id": "terracotta-lounge-kit",
+      "category": "interior",
+      "file": "models/terracotta-lounge-kit.glb",
+      "bytes": 394708,
+      "triangles": 18468,
+      "meshes": 4,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -1.170167088508606,
+          -0.0022176834754645824,
+          -0.699999988079071
+        ],
+        "max": [
+          1.6150000095367432,
+          1.2144397497177124,
+          1.2100000381469727
+        ]
+      },
+      "dimensions": [
+        2.785167098045349,
+        1.216657433193177,
+        1.9100000262260437
+      ]
+    },
+    {
+      "id": "garden-storefront",
+      "category": "exterior",
+      "file": "models/garden-storefront.glb",
+      "bytes": 238316,
+      "triangles": 9692,
+      "meshes": 19,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -2.069999933242798,
+          -7.450580707946131e-10,
+          -0.2199999988079071
+        ],
+        "max": [
+          1.3700000047683716,
+          3.4774999618530273,
+          1.1024999618530273
+        ]
+      },
+      "dimensions": [
+        3.4399999380111694,
+        3.4774999625980856,
+        1.3224999606609344
+      ]
+    },
+    {
+      "id": "garden-bench",
+      "category": "exterior",
+      "file": "models/garden-bench.glb",
+      "bytes": 79696,
+      "triangles": 4160,
+      "meshes": 2,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -0.7680000066757202,
+          -0.004504234530031681,
+          -0.3960511386394501
+        ],
+        "max": [
+          0.7680000066757202,
+          0.8920131325721741,
+          0.2810836434364319
+        ]
+      },
+      "dimensions": [
+        1.5360000133514404,
+        0.8965173671022058,
+        0.677134782075882
+      ]
+    },
+    {
+      "id": "streetlight",
+      "category": "exterior",
+      "file": "models/streetlight.glb",
+      "bytes": 30096,
+      "triangles": 1496,
+      "meshes": 2,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -0.15000000596046448,
+          0,
+          -0.25
+        ],
+        "max": [
+          0.6800000071525574,
+          3.0630500316619873,
+          0.25
+        ]
+      },
+      "dimensions": [
+        0.8300000131130219,
+        3.0630500316619873,
+        0.5
+      ]
+    },
+    {
+      "id": "open-sign",
+      "category": "exterior",
+      "file": "models/open-sign.glb",
+      "bytes": 39648,
+      "triangles": 988,
+      "meshes": 2,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -0.27300000190734863,
+          -0.0064202845096588135,
+          -0.2720857560634613
+        ],
+        "max": [
+          0.27300000190734863,
+          0.8664202690124512,
+          0.2720857560634613
+        ]
+      },
+      "dimensions": [
+        0.5460000038146973,
+        0.87284055352211,
+        0.5441715121269226
+      ]
+    },
+    {
+      "id": "planter-tree",
+      "category": "exterior",
+      "file": "models/planter-tree.glb",
+      "bytes": 250824,
+      "triangles": 11040,
+      "meshes": 4,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -0.7101987600326538,
+          0,
+          -0.7415382862091064
+        ],
+        "max": [
+          0.7070304155349731,
+          2.6770896911621094,
+          0.7120496034622192
+        ]
+      },
+      "dimensions": [
+        1.417229175567627,
+        2.6770896911621094,
+        1.4535878896713257
+      ]
+    },
+    {
+      "id": "garden-corner-kit",
+      "category": "exterior",
+      "file": "models/garden-corner-kit.glb",
+      "bytes": 630100,
+      "triangles": 27376,
+      "meshes": 21,
+      "bones": 0,
+      "skins": 0,
+      "animations": [],
+      "bounds": {
+        "min": [
+          -2.5601987838745117,
+          -0.0064202845096588135,
+          -0.36153826117515564
+        ],
+        "max": [
+          3.380000114440918,
+          3.4774999618530273,
+          1.5720857381820679
+        ]
+      },
+      "dimensions": [
+        5.94019889831543,
+        3.483920246362686,
+        1.9336239993572235
+      ]
+    }
+  ]
+}
