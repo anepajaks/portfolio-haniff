@@ -12,17 +12,13 @@ h1 span{display:block}
 .hero::after{inset:0;height:auto;background:linear-gradient(90deg,rgb(234 246 252 / 80%),rgb(234 246 252 / 24%) 65%,transparent)}
 [data-theme='dark'] .hero::after{inset:0;height:auto;background:linear-gradient(90deg,rgb(10 22 41 / 85%),rgb(10 22 41 / 30%) 65%,transparent)}
 .character-stage{position:absolute;inset:0;display:block;width:100%;height:100%;margin:0;padding:0;pointer-events:none;z-index:0}
-.grounded-scene{position:absolute;width:clamp(600px,68vw,720px);aspect-ratio:1672 / 941;bottom:0;left:calc(50% + 100px);transform:translateX(-50%)}
-.character-button{position:absolute;left:62%;top:36%;width:23%;height:59%;max-width:none;aspect-ratio:auto;padding:0;border:0;border-radius:12px;background:transparent;cursor:pointer;pointer-events:auto;z-index:2}
-.character-button:disabled{cursor:default;opacity:1}
+/* The first sprite frame stays static. Anchor its character centre at 73% of the hero. */
+.grounded-scene{position:absolute;width:clamp(1000px,97vw,1400px);aspect-ratio:1672 / 941;bottom:-24px;left:73%;transform:translateX(-75%)}
 .wave-frame{position:absolute;inset:0;display:block;overflow:hidden;pointer-events:none;mask-image:linear-gradient(180deg,transparent,#000 25%),linear-gradient(90deg,transparent,#000 18%,#000 86%,transparent);mask-composite:intersect;-webkit-mask-image:linear-gradient(180deg,transparent,#000 25%),linear-gradient(90deg,transparent,#000 18%,#000 86%,transparent);-webkit-mask-composite:source-in}
 .wave-frame img{position:absolute;inset:0 auto auto 0;width:200%;height:200%;max-width:none;object-fit:fill}
 .wave-frame--night{opacity:0}
 [data-theme='dark'] .wave-frame--day{opacity:0}
 [data-theme='dark'] .wave-frame--night{opacity:1}
-.greeting{position:absolute;left:75%;top:33%;bottom:auto;transform:translate(-50%,-100%);width:max-content;max-width:280px;background:var(--surface);border:1px solid var(--border);border-radius:20px 20px 20px 5px;padding:13px 20px;box-shadow:var(--shadow);font-size:1rem;line-height:1.55;font-weight:700;text-align:center}
-.greeting span{font-size:.875rem;font-weight:400}
-.wave-hint{position:absolute;left:75%;top:96%;transform:translateX(-50%);font-size:.75rem;color:var(--ink);text-align:center;margin:0;white-space:nowrap}
 .hero-content{position:relative;z-index:1;pointer-events:none}
 .hero-copy{pointer-events:auto}
 .sky-indicator{position:absolute;top:112px;right:max(40px,calc((100% - 1160px) / 2));width:64px;height:64px;pointer-events:none;z-index:1}
@@ -42,16 +38,14 @@ h1 span{display:block}
 .project-status{font-size:.8125rem}
 .project-description,.section-heading p{font-size:.875rem}
 .footer-inner{font-size:.875rem}
-@media(max-width:1000px) and (min-width:761px){.hero-content{gap:24px}.greeting{max-width:250px}.sky-indicator{right:32px;width:48px;height:48px}.project-card{grid-template-columns:1fr}.project-art{height:170px}}
+@media(max-width:1000px) and (min-width:761px){.hero-content{gap:24px}.grounded-scene{left:79%}.sky-indicator{right:32px;width:48px;height:48px}.project-card{grid-template-columns:1fr}.project-art{height:170px}}
 @media(max-width:760px){
  .hero{min-height:0}
  .hero-content{--title-size:clamp(3.25rem,12vw,4.5rem);min-height:0;grid-template-columns:1fr;gap:0;padding-top:124px;padding-bottom:340px}
  .hero-copy{max-width:540px}
  h1 span{display:block}
  .character-stage{margin:0;width:100%;height:100%}
- .grounded-scene{width:620px;left:50%;transform:translateX(-75%)}
- .character-button{width:23%;max-width:none}
- .greeting{max-width:270px;bottom:auto}
+ .grounded-scene{width:960px;left:50%;bottom:-16px;transform:translateX(-75%)}
  .hero-role,.hero-description{font-size:1rem}
  .sky-indicator{top:106px;right:22px;width:40px;height:40px}
  .hero-landscape{inset:0;height:100%}
