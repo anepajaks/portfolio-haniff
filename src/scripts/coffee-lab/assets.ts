@@ -10,13 +10,15 @@ function batchWheelSurfaces(root:T.Object3D){
     remove.forEach(o=>o.removeFromParent());for(const [material,geometries] of groups){const geometry=mergeGeometries(geometries,false);if(geometry)wheel.add(new T.Mesh(geometry,material));geometries.forEach(g=>g.dispose());}
   }
 }
-export const assetIds = ['barista-A','npc-curly-B','npc-cyclist-B','npc-elder-B','npc-creative-B','retro-hatchback-A','retro-sedan-A','retro-van-A','espresso-machine','grinder','milk-pitcher','portafilter','tamper','cup','saucer','wire-chair','pedestal-table','banquette','fluted-counter','wave-wall','interior-planter','garden-storefront','garden-bench','streetlight','open-sign','planter-tree'] as const;
+export const beanBagIds=['bean-bag-medium-roast','bean-bag-dark-roast','bean-bag-decaf','bean-bag-house-blend'] as const;
+export const assetIds = ['barista-A','npc-curly-B','npc-cyclist-B','npc-elder-B','npc-creative-B','retro-hatchback-A','retro-sedan-A','retro-van-A','espresso-machine','grinder','milk-pitcher','portafilter','tamper','cup','saucer','wire-chair','pedestal-table','banquette','fluted-counter','wave-wall','interior-planter','garden-storefront','garden-bench','streetlight','open-sign','planter-tree',...beanBagIds] as const;
+export const assetUrl=(id:AssetId)=>`/coffee-lab/${id.startsWith('bean-bag-')?'beans':'models'}/${id}.glb`;
 export type AssetId=typeof assetIds[number];
 export class AssetLibrary {
   private models=new Map<AssetId,GLTF>();
   static async load(progress:(done:number,total:number)=>void=()=>{}) {
     const library=new AssetLibrary(),loader=new GLTFLoader();let next=0,done=0;
-    const workers=Array.from({length:4},async()=>{while(next<assetIds.length){const id=assetIds[next++];const model=await loader.loadAsync(`/coffee-lab/models/${id}.glb`);batchWheelSurfaces(model.scene);library.models.set(id,model);progress(++done,assetIds.length);}});
+    const workers=Array.from({length:4},async()=>{while(next<assetIds.length){const id=assetIds[next++];const model=await loader.loadAsync(assetUrl(id));batchWheelSurfaces(model.scene);library.models.set(id,model);progress(++done,assetIds.length);}});
     const results=await Promise.allSettled(workers);const failure=results.find((r):r is PromiseRejectedResult=>r.status==='rejected');if(failure){library.dispose();throw failure.reason;}return library;
   }
   static fromParsed(models:Map<AssetId,GLTF>){const library=new AssetLibrary();for(const model of models.values())batchWheelSurfaces(model.scene);library.models=models;return library;}
@@ -25,5 +27,5 @@ export class AssetLibrary {
     function play(name:string,speed=1,fade=.18){const action=actions.get(name);if(!action)return;action.timeScale=speed;if(active===name)return;const previous=active?actions.get(active):undefined;action.reset().setEffectiveWeight(1).play();if(previous)previous.crossFadeTo(action,fade,false);active=name;}
     return {root,mixer,play,update:(dt:number)=>mixer.update(dt),stop:()=>{mixer.stopAllAction();mixer.uncacheRoot(root);}};
   }
-  dispose(){const gs=new Set<T.BufferGeometry>(),ms=new Set<T.Material>();for(const model of this.models.values())model.scene.traverse(o=>{if(o instanceof T.Mesh){gs.add(o.geometry);(Array.isArray(o.material)?o.material:[o.material]).forEach(m=>ms.add(m));}});gs.forEach(g=>g.dispose());ms.forEach(m=>m.dispose());this.models.clear();}
+  dispose(){const gs=new Set<T.BufferGeometry>(),ms=new Set<T.Material>(),textures=new Set<T.Texture>();for(const model of this.models.values())model.scene.traverse(o=>{if(o instanceof T.Mesh){gs.add(o.geometry);(Array.isArray(o.material)?o.material:[o.material]).forEach(m=>{ms.add(m);if('map' in m&&m.map)textures.add(m.map as T.Texture);});}});gs.forEach(g=>g.dispose());ms.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());this.models.clear();}
 }

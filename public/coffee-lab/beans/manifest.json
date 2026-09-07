@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "units": "metres",
+  "up": "+Y",
+  "front": "+Z",
+  "pivot": "bottom centre",
+  "state": "sealed",
+  "models": [
+    {
+      "id": "bean-bag-medium-roast",
+      "name": "Medium Roast",
+      "file": "public/coffee-lab/beans/bean-bag-medium-roast.glb",
+      "url": "/coffee-lab/beans/bean-bag-medium-roast.glb",
+      "bytes": 103988,
+      "triangles": 280,
+      "meshes": 2,
+      "dimensions": [
+        0.12999999523162842,
+        0.2199999988079071,
+        0.07400000095367432
+      ],
+      "animations": []
+    },
+    {
+      "id": "bean-bag-dark-roast",
+      "name": "Dark Roast",
+      "file": "public/coffee-lab/beans/bean-bag-dark-roast.glb",
+      "url": "/coffee-lab/beans/bean-bag-dark-roast.glb",
+      "bytes": 82304,
+      "triangles": 280,
+      "meshes": 2,
+      "dimensions": [
+        0.12999999523162842,
+        0.2199999988079071,
+        0.07400000095367432
+      ],
+      "animations": []
+    },
+    {
+      "id": "bean-bag-decaf",
+      "name": "Decaf",
+      "file": "public/coffee-lab/beans/bean-bag-decaf.glb",
+      "url": "/coffee-lab/beans/bean-bag-decaf.glb",
+      "bytes": 91164,
+      "triangles": 280,
+      "meshes": 2,
+      "dimensions": [
+        0.12999999523162842,
+        0.2199999988079071,
+        0.07400000095367432
+      ],
+      "animations": []
+    },
+    {
+      "id": "bean-bag-house-blend",
+      "name": "House Blend",
+      "file": "public/coffee-lab/beans/bean-bag-house-blend.glb",
+      "url": "/coffee-lab/beans/bean-bag-house-blend.glb",
+      "bytes": 97228,
+      "triangles": 280,
+      "meshes": 2,
+      "dimensions": [
+        0.12999999523162842,
+        0.2199999988079071,
+        0.07400000095367432
+      ],
+      "animations": []
+    }
+  ]
+}

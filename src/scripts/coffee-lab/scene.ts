@@ -1,6 +1,6 @@
 import * as T from 'three';
 import {box,cylinder,sphere} from './models';
-import {AssetLibrary,type AssetId} from './assets';
+import {AssetLibrary,beanBagIds,type AssetId} from './assets';
 import {interiorPalette as P,exteriorPalette as E} from './palette';
 import {roundedLoop,sampleLoop,floorY,staffAisleZ,stationPositions,type Station} from './paths';
 
@@ -20,7 +20,9 @@ export function createWorld(scene:T.Scene,assets:AssetLibrary) {
   const wave=place('wave-wall',cafe,-5.16,floorY,1.25,Math.PI/2,1.22);
   for(const x of [-3.5,-1.75,0,1.75])place('fluted-counter',cafe,x,floorY,-.90);
   box(cafe,8.45,.80,.62,P.rust,-.5,floorY+.4,-3.62,.045);box(cafe,8.6,.06,.74,P.limestone,-.5,floorY+.83,-3.62,.035);box(cafe,5.6,.07,.32,P.rust,-.9,2.45,-3.87);
-  for(let i=0;i<12;i++)place('cup',cafe,-3.25+i*.4,2.49,-3.84,0,1.35);
+  const beanShelf=new T.Group();beanShelf.name='Bean-display';cafe.add(beanShelf);
+  beanBagIds.forEach((id,i)=>{for(let copy=0;copy<2;copy++)place(id,beanShelf,-3.15+i*1.10+copy*.34,2.485,-3.84,0,2.2);});
+  for(const x of [1.35,1.70])place('cup',cafe,x,2.485,-3.84,0,1.35);
   const worktop=floorY+.96;
   place('grinder',cafe,stationPositions.grinder,worktop,-.90,Math.PI,1.22);place('espresso-machine',cafe,stationPositions.espresso,worktop,-.90,Math.PI,1.5);
   place('milk-pitcher',cafe,1.38,worktop,-1.02,0,1.5);place('tamper',cafe,-2.59,worktop,-1.04,0,1.5);place('portafilter',cafe,-2.20,worktop,-1.02,Math.PI/2,1.4);
@@ -48,7 +50,9 @@ export function createWorld(scene:T.Scene,assets:AssetLibrary) {
   let settle=0;let indoor=false,destination=1.5,walking=false,selected:Station='finish',arrived:((name:Station)=>void)|undefined;
   const turn=(root:T.Object3D,angle:number,dt:number)=>{const difference=Math.atan2(Math.sin(angle-root.rotation.y),Math.cos(angle-root.rotation.y));root.rotation.y+=Math.sign(difference)*Math.min(Math.abs(difference),dt*5.5);return Math.abs(difference)<.09;};
   function selectStation(name:Station,onArrival:(name:Station)=>void){selected=name;destination=stationPositions[name];arrived=onArrival;walking=true;}
-  function setInterior(value:boolean){indoor=value;shell.visible=fixtures.visible=!value;stations.forEach((_,o)=>o.visible=value);}
+  const city=new T.Group();city.name='City-exterior';for(const child of [...world.children])if(child!==cafe)city.add(child);world.add(city);
+  function cancelStation(){walking=false;arrived=undefined;barista.play('Idle');settle=.25;}
+  function setInterior(value:boolean){indoor=value;city.visible=shell.visible=fixtures.visible=!value;stations.forEach((_,o)=>o.visible=value);if(!value)cancelStation();}
   function update(dt:number,time:number,ambient=true){
     if(ambient){traffic.forEach(a=>{a.distance+=dt*a.speed;const p=sampleLoop(a.path,a.distance);a.root.position.copy(p.position);a.root.rotation.y=p.heading+(a.speed<0?Math.PI:0);a.play('WheelRoll',-Math.abs(a.speed)/(2*Math.PI*.29*.68),0);a.update(dt);});walkers.forEach(a=>{a.distance+=dt*a.speed;const p=sampleLoop(sidewalk,a.distance);a.root.position.copy(p.position);a.root.position.y=.28;a.root.rotation.y=p.heading;a.update(dt);});clouds.forEach((c,i)=>c.position.x=-12+i*8+Math.sin(time*.035+i)*1.4);}
     if(indoor&&walking){const delta=destination-barista.root.position.x;if(Math.abs(delta)>.003){const facing=turn(barista.root,Math.sign(delta)*Math.PI/2,dt);barista.play(facing?'Walk':'Idle',facing ? .85/.9 : 1);if(facing)barista.root.position.x+=Math.sign(delta)*Math.min(Math.abs(delta),dt*.85);}else{barista.root.position.x=destination;barista.play('Idle');settle=.25;if(turn(barista.root,0,dt)){barista.root.rotation.y=0;walking=false;arrived?.(selected);}}}
@@ -57,6 +61,6 @@ export function createWorld(scene:T.Scene,assets:AssetLibrary) {
   update(0,0);
   function updateCutaway(camera:T.Camera){backWall.visible=!indoor||camera.position.z>-3.8;sideWall.visible=wave.visible=!indoor||camera.position.x>-4.8;}
   function dispose(){actors.forEach(a=>a.stop());}
-  return {world,stations,selectStation,setInterior,update,updateCutaway,dispose,barista,traffic,walkers};
+  return {world,stations,selectStation,cancelStation,setInterior,update,updateCutaway,dispose,barista,traffic,walkers};
 }
 

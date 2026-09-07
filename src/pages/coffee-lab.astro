@@ -1,5 +1,6 @@
 ---
 import '../styles/coffee-lab.css';
+import {drinks} from '../scripts/coffee-lab/menu';
 ---
 <!doctype html>
 <html lang="en">
@@ -30,10 +31,21 @@ import '../styles/coffee-lab.css';
       </section>
       <section id="interior" class="interior-panel" hidden>
         <p class="eyebrow">INSIDE COFFEE LAB</p>
-        <h1>Behind the bar<span>.</span></h1>
-        <p id="station-note" aria-live="polite">Choose a station and your barista will walk over.</p>
-        <div class="stations" aria-label="Workstations"><button data-station="grinder">01 · Grinder</button><button data-station="espresso">02 · Espresso</button><button data-station="finish">03 · Finishing</button></div>
-        <p class="quiet">Café exploration preview · brewing comes next</p>
+        <div id="menu-picker">
+          <h1>What shall we make<span>?</span></h1>
+          <p>Choose your drink before heading to the grinder.</p>
+          <div class="drink-options" role="group" aria-label="Choose your coffee">
+            {drinks.map(drink=><button data-drink={drink.id} aria-pressed="false"><strong>{drink.name}</strong><span>{drink.ingredients}</span><small>{drink.lesson}</small></button>)}
+          </div>
+        </div>
+        <div id="recipe-panel" hidden>
+          <h1 id="drink-title"></h1>
+          <p id="drink-ingredients"></p>
+          <button id="change-drink">← Change drink</button>
+          <p id="station-note" aria-live="polite">Start at the grinder.</p>
+          <div class="stations" role="group" aria-label="Workstations"><button data-station="grinder" aria-pressed="false">01 · Grinder</button><button data-station="espresso" aria-pressed="false">02 · Espresso</button><button data-station="finish" aria-pressed="false">03 · Finishing</button></div>
+          <p class="quiet">Explore your recipe’s stations. Hands-on brewing comes next.</p>
+        </div>
         <button id="outside">← Back to the street</button>
       </section>
       <footer class="bottom-bar"><span id="view-label">EXTERIOR VIEW</span><div class="camera-controls" aria-label="Camera controls"><button id="left" aria-label="Rotate camera left">↶</button><button id="right" aria-label="Rotate camera right">↷</button><button id="zoom-in" aria-label="Zoom in">+</button><button id="zoom-out" aria-label="Zoom out">−</button><span class="divider"></span><button id="reset">Reset view</button><button id="orbit" aria-pressed="true">Auto orbit</button></div><span class="footnote">A SMALL WORLD, MADE WITH CARE</span></footer>
