@@ -1,27 +1,49 @@
-# Portfolio character fix
+# Coffee Lab — Sealed Bean Bags V1
 
-Patch kecil untuk portfolio preview sedia ada (selepas Coffee Lab Preview V2).
-Bukan keseluruhan portfolio. Tiada perubahan Coffee Lab atau dependencies.
+Empat aset 3D sebenar: Medium Roast, Dark Roast, Decaf dan House Blend.
+Setiap bag tertutup. Tiada bag terbuka, loose beans, scoop, label rak atau animasi.
 
-## Cara upload melalui GitHub
-1. Extract ZIP ini di komputer.
-2. Buka repository portfolio dan pilih branch preview yang sedang digunakan.
-3. Pilih Add file > Upload files.
-4. Drag folder src dari DALAM folder yang diextract ke halaman upload di root repository. Kekalkan struktur folder; jangan upload ZIP atau letakkan tiga fail terus di root.
-5. Semak senarai perubahan hanya mengandungi:
-   - src/components/HaniffCharacter.astro
-   - src/styles/hero.css
-   - src/styles/animations.css
-6. Commit changes ke branch preview. Semak preview deployment jika hosting disambungkan.
+## Upload ke GitHub preview
 
-Jika menggunakan checkout local, salin dan gantikan tiga fail tersebut mengikut path yang sama, kemudian commit dan push branch preview.
-Jangan padam keseluruhan folder src; gabungkan kandungannya.
+1. Extract Coffee-Lab-Beans-V1-PATCH.zip.
+2. Buka repository portfolio, pilih branch preview sedia ada.
+3. Pilih Add file > Upload files di root repository.
+4. Drag folder public dari dalam ZIP yang telah diextract. Kekalkan susunan folder.
+5. Semak empat fail .glb dan satu manifest.json berada di public/coffee-lab/beans/.
+6. Commit perubahan ke branch preview.
 
-## Perubahan
-- Character homepage dibesarkan mengikut anggaran screenshot, dengan saiz responsif.
-- Character statik: bubble Hello, butang klik dan animasi lambai dibuang.
-- Gambar day/night sedia ada digunakan semula; pose tangan masih terangkat dalam gambar.
-- src/scripts/character.ts lama boleh kekal: ia tidak lagi diimport atau dihantar oleh komponen ini.
+Gabungkan folder public; jangan padam atau gantikan seluruh folder public sedia ada.
+Jangan upload ZIP sebagai satu fail. READ-ME-FIRST.md ini panduan sahaja.
 
-Build Astro telah lulus selepas perubahan. Preview desktop telah dilihat.
-ZIP ini tidak mengandungi imej preview, node_modules, dist atau fail Coffee Lab.
+## Status
+
+Ini pack aset sahaja. Upload tidak akan terus meletakkan bag di rak game.
+Penempatan rak, pemilihan beans, angle kamera dan gameplay akan disambungkan
+dalam fasa game berikutnya. Homepage dan Coffee Lab sedia ada tidak diubah.
+
+## Integrasi nanti
+
+- URL: /coffee-lab/beans/bean-bag-medium-roast.glb
+- URL: /coffee-lab/beans/bean-bag-dark-roast.glb
+- URL: /coffee-lab/beans/bean-bag-decaf.glb
+- URL: /coffee-lab/beans/bean-bag-house-blend.glb
+- GLB glTF 2.0, 280 triangles dan dua mesh setiap bag.
+- Tinggi 0.22m; pivot di tengah tapak, Y atas, muka cetakan menghadap +Z.
+- Tekstur JPEG 512 x 768 tertanam dalam GLB: tiada fail tekstur tambahan diperlukan.
+- Cetakan depan berasaskan design yang diluluskan; sisi dan belakang kertas polos.
+- Metadata assetId, beanType dan state='sealed' tersedia pada node utama.
+- Import menggunakan GLTFLoader sedia ada. Guna clone untuk ulang bag atas rak;
+  kongsi geometry/material supaya tidak perlu load fail yang sama berulang kali.
+- Decaf dan House Blend ialah kategori beans, bukan tahap roast. Aturan ilmu
+  dan gameplay belum ditetapkan oleh pack ini.
+
+## Semakan
+
+Keempat-empat GLB berjaya dimuat dalam viewer 3D sebenar. Cetakan tegak,
+bag tertutup dan tiada beans tambahan. Semakan fail meliputi import geometry,
+dimensi, koordinat UV, JPEG tertanam dan data vertex yang sah.
+
+Artwork dibuat menggunakan built-in imagegen daripada preview diluluskan.
+Prompt: ratakan cetakan depan bag tertutup menjadi tekstur albedo, kekalkan
+warna, nama dan ilustrasi; tanpa perspektif, bayang, bag terbuka atau loose beans.
+Geometry pouch dibina sebagai model 3D ringan untuk Coffee Lab.
